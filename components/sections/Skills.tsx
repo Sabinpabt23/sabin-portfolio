@@ -4,14 +4,7 @@ import { motion, type Variants } from "framer-motion";
 /* ─────────────────────────────────────────
    Data
 ───────────────────────────────────────── */
-const coreStack = [
-  "Java",
-  "Node.js",
-  "TypeScript",
-  "PostgreSQL",
-  "Next.js",
-  "AWS",
-];
+const coreStack = ["Java", "Node.js", "TypeScript", "PostgreSQL", "Laravel"];
 
 const skillGroups = [
   {
@@ -20,10 +13,9 @@ const skillGroups = [
     icon: "server",
     skills: [
       { name: "Node.js", level: "advanced" },
-      { name: "Express.js", level: "advanced" },
+      { name: "Express.js/NestJS", level: "advanced" },
       { name: "Java", level: "advanced" },
-      { name: "TypeScript", level: "advanced" },
-      { name: "NestJS", level: "intermediate" },
+      { name: "Laravel", level: "advanced" },
       { name: "Python", level: "intermediate" },
     ],
   },
@@ -46,7 +38,6 @@ const skillGroups = [
     skills: [
       { name: "PostgreSQL", level: "advanced" },
       { name: "MySQL", level: "advanced" },
-      { name: "Prisma/Type ORM", level: "advanced" },
       { name: "MongoDB", level: "intermediate" },
       { name: "Redis", level: "intermediate" },
       { name: "Oracle", level: "intermediate" },
@@ -57,9 +48,7 @@ const skillGroups = [
     index: "04",
     icon: "cloud",
     skills: [
-      { name: "AWS EC2", level: "certified" },
-      { name: "AWS S3", level: "certified" },
-      { name: "AWS Lambda", level: "certified" },
+      { name: "AWS", level: "certified" },
       { name: "Docker", level: "intermediate" },
       { name: "Vercel", level: "advanced" },
       { name: "Render", level: "advanced" },
@@ -83,7 +72,6 @@ const skillGroups = [
     skills: [
       { name: "Git / GitHub", level: "advanced" },
       { name: "Postman", level: "advanced" },
-      { name: "Swagger", level: "advanced" },
       { name: "Figma", level: "intermediate" },
       { name: "PowerBI", level: "intermediate" },
     ],

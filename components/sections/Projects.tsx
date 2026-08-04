@@ -3,6 +3,43 @@ import { motion } from "framer-motion";
 
 const projects = [
   {
+    title: "SkillSwap",
+    subtitle: "Peer-to-Peer Skill Exchange Platform",
+    description:
+      "A full-stack marketplace where people trade skills instead of money — built with Laravel 13, Next.js 16, real-time WebSockets, and a custom 'Exchange Ledger' design system. Features skill discovery, skill requests with a full state machine, real-time chat, reviews, notifications, and an admin portal — all under strict Controller → Service → Repository architecture.",
+    highlights: [
+      "Full skill exchange lifecycle: browse/search teachers by skill, send skill requests with proposed time, accept/reject/cancel/complete with a 6-state state machine and 7 server-side guards, auto-expiry of stale requests via scheduled job",
+      "Real-time one-to-one chat via Laravel Reverb WebSockets — messages, image/file attachments via Cloudinary, cursor-paginated history with infinite scroll, read/unread tracking, implicit mark-read, and message dedup across HTTP POST and WebSocket echo",
+      "Review and reputation system: 1–5 star ratings with comments, one review per participant per request, cached average ratings in Redis, hidden review moderation by admin, audit logs on every state change",
+      "Notification system with real-time bell, unread badge, per-type navigation targets, mark-all-read (excluding message_received by design), soft-delete dismiss, and server-side deduplication across three listeners",
+      "Admin portal: dashboard with 6 real-time metric cards, user management with suspend/unsuspend, review moderation with hide/unhide, all behind Sanctum + role middleware",
+      "Strict three-layer architecture enforced end-to-end: Controllers route only, Services own all business logic, Repositories handle all Eloquent queries — no layer bleeding. 105 automated tests, 241 assertions, CI-green via GitHub Actions.",
+      "Custom 'Exchange Ledger' design system: copper/verdigris/sage/ink palette, Fraunces display serif + Inter body + JetBrains Mono for numeric records, semantic Tailwind CSS v4 tokens, responsive mobile-first layout with hamburger sidebar",
+      "Docker Compose local stack with 8 services: PostgreSQL 15, Redis 7, Mailhog, Laravel server, Reverb WebSocket server, Next.js client, queue worker, and scheduler — zero local dependencies required",
+    ],
+    stack: [
+      "Laravel 13",
+      "Next.js 16",
+      "TypeScript",
+      "PostgreSQL 15",
+      "Redis 7",
+      "Tailwind CSS v4",
+      "Docker",
+      "Cloudinary",
+      "Zustand",
+      "TanStack Query",
+      "PusherJS",
+      "Sanctum",
+    ],
+    github: "https://github.com/SabinPant/skillswap",
+    arch: [
+      { label: "Next.js UI", icon: "browser" },
+      { label: "Laravel API", icon: "server" },
+      { label: "Service Layer", icon: "layers" },
+      { label: "PostgreSQL & Redis", icon: "database" },
+    ],
+  },
+  {
     title: "MediLife",
     subtitle: "Hospital Management System",
     description:
