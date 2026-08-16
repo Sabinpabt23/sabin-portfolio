@@ -4,7 +4,14 @@ import { motion, type Variants } from "framer-motion";
 /* ─────────────────────────────────────────
    Data
 ───────────────────────────────────────── */
-const coreStack = ["Java", "Node.js", "TypeScript", "PostgreSQL", "Laravel"];
+const coreStack = [
+  "Java",
+  ".NET",
+  "Node.js",
+  "Laravel",
+  "TypeScript",
+  "PostgreSQL",
+];
 
 const skillGroups = [
   {
@@ -12,9 +19,10 @@ const skillGroups = [
     index: "01",
     icon: "server",
     skills: [
+      { name: "Spring Boot/ Java EE", level: "advanced" },
+      { name: ".NET", level: "intermediate" },
       { name: "Node.js", level: "advanced" },
       { name: "Express.js/NestJS", level: "advanced" },
-      { name: "Java", level: "advanced" },
       { name: "Laravel", level: "advanced" },
       { name: "Python", level: "intermediate" },
     ],
@@ -26,6 +34,7 @@ const skillGroups = [
     skills: [
       { name: "React", level: "advanced" },
       { name: "Next.js", level: "advanced" },
+      { name: "ASP.NET MVC", level: "intermediate" },
       { name: "Tailwind CSS", level: "advanced" },
       { name: "HTML5 / CSS3", level: "advanced" },
       { name: "JSP/JSTL", level: "intermediate" },
@@ -61,7 +70,7 @@ const skillGroups = [
     skills: [
       { name: "System Design", level: "advanced" },
       { name: "REST API", level: "advanced" },
-      { name: "JWT Auth", level: "advanced" },
+      { name: "JWT/Session Auth", level: "advanced" },
       { name: "RBAC", level: "advanced" },
     ],
   },
@@ -72,8 +81,8 @@ const skillGroups = [
     skills: [
       { name: "Git / GitHub", level: "advanced" },
       { name: "Postman", level: "advanced" },
-      { name: "Figma", level: "intermediate" },
       { name: "PowerBI", level: "intermediate" },
+      { name: "Microsoft Office", level: "intermediate" },
     ],
   },
 ];

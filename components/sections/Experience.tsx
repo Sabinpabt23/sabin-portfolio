@@ -4,38 +4,53 @@ import { motion, type Variants } from "framer-motion";
 /* ─────────────────────────────────────────
    Data
 ───────────────────────────────────────── */
-const experience = {
-  role: "Full-Stack Developer Intern",
-  company: "Leaflet Digital Solutions",
-  location: "Kathmandu, Nepal",
-  period: "March 2026 — June 2026",
-  impact: [
-    {
-      headline: "Architecture & implementation ownership",
-      detail:
-        "Building data-intensive systems with Node.js, Express, Next.js and PostgreSQL responsible for both architecture decisions and day-to-day implementation.",
-    },
-    {
-      headline: "Secured API pipelines at scale",
-      detail:
-        "Designed and hardened API layers with JWT authentication and role-based access control across multi-tenant applications.",
-    },
-    {
-      headline: "Zero-ambiguity handoffs",
-      detail:
-        "Produced full Swagger API documentation, cutting frontend integration time and eliminating back-and-forth over contract details.",
-    },
-  ],
-  stack: [
-    "Node.js",
-    "Express",
-    "Next.js",
-    "PostgreSQL",
-    "JWT",
-    "Swagger",
-    "Prisma",
-  ],
-};
+const experiences = [
+  {
+    role: "Developer Intern",
+    company: "Karmachari Sanchaya Kosh (EPF Nepal)",
+    location: "Lalitpur, Pulchowk · On-site",
+    period: "August 2026 — Present",
+    completed: false,
+    impact: [
+      {
+        headline: "Requirements-to-design ownership",
+        detail:
+          "Collaborating with development teams and stakeholders on requirements gathering, SRS documentation, system design, and UML/ERD diagrams.",
+      },
+      {
+        headline: "Backend development with .NET",
+        detail:
+          "Building software features and REST APIs on .NET against an Oracle database, working within an existing enterprise system.",
+      },
+    ],
+    stack: [".NET", "REST APIs", "Oracle", "UML", "ERD", "SRS"],
+  },
+  {
+    role: "Full-Stack Developer Intern",
+    company: "Leaflet Digital Solutions",
+    location: "Kathmandu, Nepal",
+    period: "March 2026 — June 2026",
+    completed: true,
+    impact: [
+      {
+        headline: "Architecture & implementation ownership",
+        detail:
+          "Building data-intensive systems with Node.js, Express, Next.js and PostgreSQL responsible for both architecture decisions and day-to-day implementation.",
+      },
+      {
+        headline: "Secured API pipelines at scale",
+        detail:
+          "Designed and hardened API layers with JWT authentication and role-based access control across multi-tenant applications.",
+      },
+      {
+        headline: "Zero-ambiguity handoffs",
+        detail:
+          "Produced full Swagger API documentation, cutting frontend integration time and eliminating back-and-forth over contract details.",
+      },
+    ],
+    stack: ["Node.js", "Express", "Next.js", "PostgreSQL", "JWT", "Swagger"],
+  },
+];
 
 /* ─────────────────────────────────────────
    Variants
@@ -86,112 +101,129 @@ export default function Experience() {
         </motion.div>
 
         {/* ══════════════════════════
-            Role card
+            Role cards
         ══════════════════════════ */}
-        <motion.div
-          variants={cardVariant}
-          initial="hidden"
-          whileInView="show"
-          viewport={{ once: true }}
-          className="bg-(--card) border border-(--border) rounded-2xl
-            overflow-hidden hover:border-(--primary)/30 transition-colors duration-300"
-        >
-          <div className="p-6 sm:p-8">
-            {/* Role identity row */}
-            <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4 mb-7 pb-7 border-b border-(--border)">
-              <div>
-                <h3 className="text-lg font-bold text-(--foreground) leading-tight">
-                  {experience.role}
-                </h3>
-                <p className="text-sm font-semibold text-(--muted-foreground) mt-1">
-                  {experience.company}
-                </p>
-                <p className="text-xs text-(--muted-foreground)/80 mt-2 flex items-center gap-1.5">
-                  <svg
-                    width="10"
-                    height="10"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  >
-                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
-                    <circle cx="12" cy="10" r="3" />
-                  </svg>
-                  {experience.location}
-                </p>
-              </div>
-
-              {/* Period + status */}
-              <div className="flex flex-col items-start sm:items-end gap-1.5 shrink-0">
-                <span
-                  className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full
-                  bg-(--secondary) border border-(--border)
-                  text-xs text-(--secondary-foreground) whitespace-nowrap"
-                >
-                  {experience.period}
-                </span>
-                <span className="inline-flex items-center gap-1.5 text-[11px] font-medium text-(--muted-foreground)">
-                  <svg
-                    width="11"
-                    height="11"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2.5"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  >
-                    <polyline points="20 6 9 17 4 12" />
-                  </svg>
-                  Completed
-                </span>
-              </div>
-            </div>
-
-            {/* Impact points */}
-            <ul className="space-y-5">
-              {experience.impact.map((point, i) => (
-                <motion.li
-                  key={i}
-                  custom={i}
-                  variants={itemVariant}
-                  initial="hidden"
-                  whileInView="show"
-                  viewport={{ once: true }}
-                  className="flex gap-3"
-                >
-                  <div className="mt-1.75 w-1.5 h-1.5 rounded-full shrink-0 bg-(--primary)" />
+        <div className="space-y-6">
+          {experiences.map((experience) => (
+            <motion.div
+              key={experience.company}
+              variants={cardVariant}
+              initial="hidden"
+              whileInView="show"
+              viewport={{ once: true }}
+              className="bg-(--card) border border-(--border) rounded-2xl
+                overflow-hidden hover:border-(--primary)/30 transition-colors duration-300"
+            >
+              <div className="p-6 sm:p-8">
+                {/* Role identity row */}
+                <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4 mb-7 pb-7 border-b border-(--border)">
                   <div>
-                    <p className="text-sm font-semibold text-(--foreground) leading-snug mb-0.5">
-                      {point.headline}
+                    <h3 className="text-lg font-bold text-(--foreground) leading-tight">
+                      {experience.role}
+                    </h3>
+                    <p className="text-sm font-semibold text-(--muted-foreground) mt-1">
+                      {experience.company}
                     </p>
-                    <p className="text-sm text-(--muted-foreground) leading-relaxed">
-                      {point.detail}
+                    <p className="text-xs text-(--muted-foreground)/80 mt-2 flex items-center gap-1.5">
+                      <svg
+                        width="10"
+                        height="10"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="2"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      >
+                        <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+                        <circle cx="12" cy="10" r="3" />
+                      </svg>
+                      {experience.location}
                     </p>
                   </div>
-                </motion.li>
-              ))}
-            </ul>
 
-            {/* Stack tags */}
-            <div className="flex flex-wrap gap-2 mt-7 pt-6 border-t border-(--border)">
-              {experience.stack.map((tech) => (
-                <span
-                  key={tech}
-                  className="px-2.5 py-1 rounded-lg bg-(--secondary) text-xs
-                    font-mono text-(--secondary-foreground)
-                    border border-(--border) hover:border-(--primary)/40
-                    transition-colors duration-150"
-                >
-                  {tech}
-                </span>
-              ))}
-            </div>
-          </div>
-        </motion.div>
+                  {/* Period + status */}
+                  <div className="flex flex-col items-start sm:items-end gap-1.5 shrink-0">
+                    <span
+                      className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full
+                      bg-(--secondary) border border-(--border)
+                      text-xs text-(--secondary-foreground) whitespace-nowrap"
+                    >
+                      {experience.period}
+                    </span>
+                    <span className="inline-flex items-center gap-1.5 text-[11px] font-medium text-(--muted-foreground)">
+                      {experience.completed ? (
+                        <>
+                          <svg
+                            width="11"
+                            height="11"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            strokeWidth="2.5"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                          >
+                            <polyline points="20 6 9 17 4 12" />
+                          </svg>
+                          Completed
+                        </>
+                      ) : (
+                        <>
+                          <span className="relative flex h-2 w-2">
+                            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-(--primary) opacity-75" />
+                            <span className="relative inline-flex rounded-full h-2 w-2 bg-(--primary)" />
+                          </span>
+                          Current
+                        </>
+                      )}
+                    </span>
+                  </div>
+                </div>
+
+                {/* Impact points */}
+                <ul className="space-y-5">
+                  {experience.impact.map((point, i) => (
+                    <motion.li
+                      key={i}
+                      custom={i}
+                      variants={itemVariant}
+                      initial="hidden"
+                      whileInView="show"
+                      viewport={{ once: true }}
+                      className="flex gap-3"
+                    >
+                      <div className="mt-1.75 w-1.5 h-1.5 rounded-full shrink-0 bg-(--primary)" />
+                      <div>
+                        <p className="text-sm font-semibold text-(--foreground) leading-snug mb-0.5">
+                          {point.headline}
+                        </p>
+                        <p className="text-sm text-(--muted-foreground) leading-relaxed">
+                          {point.detail}
+                        </p>
+                      </div>
+                    </motion.li>
+                  ))}
+                </ul>
+
+                {/* Stack tags */}
+                <div className="flex flex-wrap gap-2 mt-7 pt-6 border-t border-(--border)">
+                  {experience.stack.map((tech) => (
+                    <span
+                      key={tech}
+                      className="px-2.5 py-1 rounded-lg bg-(--secondary) text-xs
+                        font-mono text-(--secondary-foreground)
+                        border border-(--border) hover:border-(--primary)/40
+                        transition-colors duration-150"
+                    >
+                      {tech}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            </motion.div>
+          ))}
+        </div>
 
         {/* ══════════════════════════
             Next chapter — CTA card
@@ -237,22 +269,9 @@ export default function Experience() {
                     Next chapter
                   </p>
                   <p className="text-xs text-(--muted-foreground) mt-0.5">
-                    Open to full-time roles, internships &amp; freelance
+                    Open to full-time roles, internships.
                   </p>
-                  <div className="flex flex-wrap gap-1.5 mt-2">
-                    {["FinTech", "Banking Systems", "Backend Engineering"].map(
-                      (tag) => (
-                        <span
-                          key={tag}
-                          className="text-[10px] px-2 py-0.5 rounded-full
-                            bg-(--secondary) border border-(--border)
-                            text-(--muted-foreground)"
-                        >
-                          {tag}
-                        </span>
-                      ),
-                    )}
-                  </div>
+                  <div className="flex flex-wrap gap-1.5 mt-2"></div>
                 </div>
               </div>
 

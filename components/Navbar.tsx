@@ -3,6 +3,7 @@
 import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
+import ThemeToggle from "@/components/ThemeToggle";
 
 const navLinks = [
   { label: "About", href: "#about" },
@@ -118,7 +119,7 @@ export default function Navbar() {
       <header
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
           scrolled
-            ? "bg-[#0a0a0f]/90 backdrop-blur-md border-b border-(--border)"
+            ? "bg-(--background)/90 backdrop-blur-md border-b border-(--border)"
             : "bg-transparent"
         }`}
       >
@@ -134,13 +135,13 @@ export default function Navbar() {
               window.scrollTo({ top: 0, behavior: "smooth" });
             }}
           >
-            <div className="w-8 h-8 rounded-lg bg-(--primary) flex items-center justify-center">
+            <div className="w-8 h-8 rounded-lg bg-primary flex items-center justify-center">
               <span className="text-white text-xs font-bold tracking-tight">
                 SP
               </span>
             </div>
-            <span className="text-(--foreground)">
-              Sabin<span className="text-(--primary)">.</span>
+            <span className="text-foreground">
+              Sabin<span className="text-primary">.</span>
             </span>
           </motion.a>
 
@@ -158,24 +159,30 @@ export default function Navbar() {
                     e.preventDefault();
                     handleLinkClick(link.href);
                   }}
-                  className="text-sm text-(--secondary-foreground) hover:text-(--foreground) transition-colors duration-200 relative group cursor-pointer"
+                  className="text-sm text-secondary-foreground hover:text-foreground transition-colors duration-200 relative group cursor-pointer"
                 >
                   {link.label}
-                  <span className="absolute -bottom-1 left-0 w-0 h-px bg-(--primary) transition-all duration-300 group-hover:w-full" />
+                  <span className="absolute -bottom-1 left-0 w-0 h-px bg-primary transition-all duration-300 group-hover:w-full" />
                 </a>
               </li>
             ))}
+            <li>
+              <ThemeToggle />
+            </li>
           </motion.ul>
 
-          <button
-            ref={buttonRef}
-            className="md:hidden text-(--foreground) z-50 p-2 rounded-lg hover:bg-(--secondary) transition-colors active:scale-95"
-            onClick={() => setMobileOpen(!mobileOpen)}
-            aria-label={mobileOpen ? "Close menu" : "Open menu"}
-            aria-expanded={mobileOpen}
-          >
-            {mobileOpen ? <X size={24} /> : <Menu size={24} />}
-          </button>
+          <div className="flex items-center gap-1 md:hidden">
+            <ThemeToggle />
+            <button
+              ref={buttonRef}
+              className="text-foreground z-50 p-2 rounded-lg hover:bg-secondary transition-colors active:scale-95"
+              onClick={() => setMobileOpen(!mobileOpen)}
+              aria-label={mobileOpen ? "Close menu" : "Open menu"}
+              aria-expanded={mobileOpen}
+            >
+              {mobileOpen ? <X size={24} /> : <Menu size={24} />}
+            </button>
+          </div>
         </nav>
       </header>
 
@@ -198,7 +205,7 @@ export default function Navbar() {
               animate={{ opacity: 1, x: 0 }}
               exit={{ opacity: 0, x: "100%" }}
               transition={{ type: "tween", duration: 0.3 }}
-              className="fixed md:hidden top-0 right-0 bottom-0 w-full max-w-sm bg-[#0a0a0f]/95 backdrop-blur-lg border-l border-(--border) z-40 shadow-2xl"
+              className="fixed md:hidden top-0 right-0 bottom-0 w-full max-w-sm bg-(--background)/95 backdrop-blur-lg border-l border-(--border) z-40 shadow-2xl"
               style={{ top: 0 }}
             >
               <div className="flex flex-col h-full pt-20 px-6">
@@ -216,7 +223,7 @@ export default function Navbar() {
                           e.preventDefault();
                           handleLinkClick(link.href);
                         }}
-                        className="block text-xl font-medium text-(--secondary-foreground) hover:text-(--primary) transition-colors py-3 active:scale-95 cursor-pointer"
+                        className="block text-xl font-medium text-secondary-foreground hover:text-primary transition-colors py-3 active:scale-95 cursor-pointer"
                       >
                         {link.label}
                       </a>

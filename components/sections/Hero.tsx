@@ -269,25 +269,25 @@ export default function Hero() {
 
   const terminalLines = useMemo(
     () => [
-      { text: "$ whoami", delay: 600, color: "#6366f1" },
+      { text: "$ whoami", delay: 600, color: "var(--primary)" },
       {
         text: "→ sabin_pant :: full-stack engineer",
         delay: 1000,
-        color: "#e8e8f0",
+        color: "var(--foreground)",
       },
-      { text: "$ cat approach.txt", delay: 1700, color: "#6366f1" },
+      { text: "$ cat approach.txt", delay: 1700, color: "var(--primary)" },
       {
         text: "→ architecture first. code second.",
         delay: 2100,
-        color: "#a0a0b8",
+        color: "var(--muted-foreground)",
       },
-      { text: "$ ls specialties/", delay: 2800, color: "#6366f1" },
+      { text: "$ ls specialties/", delay: 2800, color: "var(--primary)" },
       {
         text: "→ system-design  auth  APIs  cloud",
         delay: 3200,
-        color: "#a0a0b8",
+        color: "var(--muted-foreground)",
       },
-      { text: "$ status --check", delay: 4000, color: "#6366f1" },
+      { text: "$ status --check", delay: 4000, color: "var(--primary)" },
       { text: "→ open to opportunities ▋", delay: 4400, color: "#4ade80" },
     ],
     [],

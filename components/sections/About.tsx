@@ -204,7 +204,7 @@ export default function About() {
   return (
     <section
       id="about"
-      className="py-28 relative overflow-hidden bg-(--background)"
+      className="py-28 relative overflow-hidden bg-background"
     >
       <div className="relative z-10 max-w-6xl mx-auto px-6">
         {/* Section header */}
@@ -215,14 +215,14 @@ export default function About() {
           viewport={{ once: true, margin: "-100px" }}
           className="text-center mb-20"
         >
-          <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-(--border) bg-(--secondary) text-[10px] text-(--primary) mb-5 font-semibold tracking-[0.18em] uppercase">
+          <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-(--border) bg-secondary text-[10px] text-primary mb-5 font-semibold tracking-[0.18em] uppercase">
             About Me
           </span>
           <h2 className="text-4xl lg:text-5xl font-bold leading-tight tracking-tight">
             The developer behind{" "}
-            <span className="text-(--primary)">the architecture.</span>
+            <span className="text-primary">the architecture.</span>
           </h2>
-          <p className="mt-4 text-(--muted-foreground) max-w-xl mx-auto text-[0.95rem] leading-relaxed">
+          <p className="mt-4 text-muted-foreground max-w-xl mx-auto text-[0.95rem] leading-relaxed">
             Backend-focused developer who genuinely enjoys figuring out how
             complex systems fit together.
           </p>
@@ -244,7 +244,7 @@ export default function About() {
                 aria-hidden
                 className="absolute inset-0 translate-x-2.5 translate-y-2.5 rounded-2xl border border-(--primary)/15 pointer-events-none"
               />
-              <div className="relative rounded-2xl overflow-hidden border border-(--border) bg-(--card) shadow-sm">
+              <div className="relative rounded-2xl overflow-hidden border border-(--border) bg-card shadow-sm">
                 <div
                   aria-hidden
                   className="absolute inset-0 z-10 pointer-events-none rounded-2xl bg-linear-to-b from-transparent via-transparent to-(--background)/60"
@@ -257,13 +257,13 @@ export default function About() {
                     fill
                     sizes="(max-width: 768px) 100vw, 360px"
                     className="object-cover object-top transition-opacity duration-500 ease-out"
-                    priority={true}
+                    loading="lazy"
                     quality={85}
                     onLoad={() => setImageLoaded(true)}
                     style={{ opacity: imageLoaded ? 1 : 0 }}
                   />
                   {!imageLoaded && (
-                    <div className="absolute inset-0 bg-(--secondary) animate-pulse" />
+                    <div className="absolute inset-0 bg-secondary animate-pulse" />
                   )}
                 </div>
               </div>
@@ -282,7 +282,7 @@ export default function About() {
                   key={stat.label}
                   variants={childVariants}
                   style={{ "--local-accent": stat.accent } as CSSProperties}
-                  className="bg-(--card) border border-(--border) rounded-xl p-4 transition-all duration-300 ease-out cursor-default will-change-transform group hover:border-(--local-accent)/40 hover:shadow-[0_4px_20px_-4px_rgba(var(--local-accent),0.1)] hover:-translate-y-0.5"
+                  className="bg-card border border-(--border) rounded-xl p-4 transition-all duration-300 ease-out cursor-default will-change-transform group hover:border-(--local-accent)/40 hover:shadow-[0_4px_20px_-4px_rgba(var(--local-accent),0.1)] hover:-translate-y-0.5"
                 >
                   <div
                     className="text-2xl font-bold mb-0.5 tabular-nums transition-transform duration-300 group-hover:scale-105 origin-left"
@@ -294,7 +294,7 @@ export default function About() {
                       delay={150 + i * 80}
                     />
                   </div>
-                  <div className="text-[11px] text-(--muted-foreground) font-medium tracking-wide">
+                  <div className="text-[11px] text-muted-foreground font-medium tracking-wide">
                     {stat.label}
                   </div>
                 </motion.div>
@@ -311,11 +311,11 @@ export default function About() {
             className="flex flex-col gap-8 pt-1"
           >
             <div className="space-y-3">
-              <h3 className="flex items-center gap-2 text-xs font-semibold tracking-[0.15em] uppercase text-(--primary)">
-                <span className="h-3 w-0.5 rounded-full bg-(--primary)" />
+              <h3 className="flex items-center gap-2 text-xs font-semibold tracking-[0.15em] uppercase text-primary">
+                <span className="h-3 w-0.5 rounded-full bg-primary" />
                 Origin Story
               </h3>
-              <p className="text-(--muted-foreground) leading-[1.8] text-[0.95rem] font-normal text-justify lg:text-left">
+              <p className="text-muted-foreground leading-[1.8] text-[0.95rem] font-normal text-justify lg:text-left">
                 Honestly? It started because I wanted to make my own game. That
                 sent me down the Computer Science path in high school, where I
                 picked up C and C++ and got hooked almost immediately,
@@ -331,11 +331,11 @@ export default function About() {
             <div className="h-px w-full bg-(--border) opacity-60" />
 
             <div className="space-y-3">
-              <h3 className="flex items-center gap-2 text-xs font-semibold tracking-[0.15em] uppercase text-(--primary)">
-                <span className="h-3 w-0.5 rounded-full bg-(--primary)" />
+              <h3 className="flex items-center gap-2 text-xs font-semibold tracking-[0.15em] uppercase text-primary">
+                <span className="h-3 w-0.5 rounded-full bg-primary" />
                 Why Backend & System Design
               </h3>
-              <p className="text-(--muted-foreground) leading-[1.8] text-[0.95rem] font-normal text-justify lg:text-left">
+              <p className="text-muted-foreground leading-[1.8] text-[0.95rem] font-normal text-justify lg:text-left">
                 I like backend because that&apos;s where the real puzzle is.
                 Figuring out how to handle race conditions, keep data consistent
                 across services, and design a schema that won&apos;t fall apart
@@ -350,11 +350,11 @@ export default function About() {
             <div className="h-px w-full bg-(--border) opacity-60" />
 
             <div className="space-y-3">
-              <h3 className="flex items-center gap-2 text-xs font-semibold tracking-[0.15em] uppercase text-(--primary)">
-                <span className="h-3 w-0.5 rounded-full bg-(--primary)" />
+              <h3 className="flex items-center gap-2 text-xs font-semibold tracking-[0.15em] uppercase text-primary">
+                <span className="h-3 w-0.5 rounded-full bg-primary" />
                 Where I&apos;m Headed
               </h3>
-              <p className="text-(--muted-foreground) leading-[1.8] text-[0.95rem] font-normal text-justify lg:text-left">
+              <p className="text-muted-foreground leading-[1.8] text-[0.95rem] font-normal text-justify lg:text-left">
                 Long term, I want to work on the kind of infrastructure where
                 there&apos;s zero room for error, think banking systems, payment
                 processing, real-time transactions. The stuff where a bug
@@ -371,7 +371,7 @@ export default function About() {
         <div className="mt-16 w-full">
           {/* Section Header */}
           <div className="flex items-center gap-3 mb-6">
-            <span className="text-(--primary) font-semibold text-sm uppercase tracking-wider">
+            <span className="text-primary font-semibold text-sm uppercase tracking-wider">
               Outside the Code
             </span>
             <div className="flex-1 h-px bg-linear-to-r from-(--border) to-transparent" />
@@ -389,24 +389,20 @@ export default function About() {
                     onClick={() => setActiveInterest(item)}
                     className={`flex items-center gap-3 px-4 py-3 rounded-xl border-l-2 transition-all duration-300 ease-out shrink-0 md:shrink ${
                       isActive
-                        ? "bg-(--secondary) border-(--primary)"
+                        ? "bg-secondary border-primary"
                         : "border-transparent hover:bg-(--secondary)/50"
                     }`}
                   >
                     <div
                       className={`transition-colors duration-300 ${
-                        isActive
-                          ? "text-(--primary)"
-                          : "text-(--muted-foreground)"
+                        isActive ? "text-primary" : "text-muted-foreground"
                       }`}
                     >
                       {item.icon}
                     </div>
                     <span
                       className={`text-sm font-semibold tracking-wide whitespace-nowrap transition-colors duration-300 ${
-                        isActive
-                          ? "text-(--foreground)"
-                          : "text-(--muted-foreground)"
+                        isActive ? "text-foreground" : "text-muted-foreground"
                       }`}
                     >
                       {item.label}
@@ -441,13 +437,13 @@ export default function About() {
                     <div style={{ color: activeInterest.accent }}>
                       {activeInterest.icon}
                     </div>
-                    <h3 className="text-3xl font-bold text-(--foreground) tracking-tight">
+                    <h3 className="text-3xl font-bold text-foreground tracking-tight">
                       {activeInterest.label}
                     </h3>
                   </div>
 
                   {/* Description */}
-                  <p className="text-(--muted-foreground) text-[0.95rem] leading-relaxed mb-8">
+                  <p className="text-muted-foreground text-[0.95rem] leading-relaxed mb-8">
                     {activeInterest.desc}
                   </p>
 
@@ -485,7 +481,7 @@ export default function About() {
                       >
                         Fun Fact
                       </p>
-                      <p className="text-sm text-(--foreground) leading-relaxed">
+                      <p className="text-sm text-foreground leading-relaxed">
                         {activeInterest.funFact}
                       </p>
                     </div>
