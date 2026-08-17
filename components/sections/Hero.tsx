@@ -606,14 +606,14 @@ export default function Hero() {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, delay: 0.8 }}
-              className="relative z-10 mt-6 rounded-xl border border-(--border) bg-(--card) overflow-hidden w-full max-w-95"
+              className="relative z-10 mt-6 rounded-xl border border-(--border) bg-card overflow-hidden w-full max-w-95"
             >
               {/* Terminal title bar */}
               <div className="flex items-center gap-2 px-3 sm:px-4 py-2.5 border-b border-(--border) bg-(--secondary)/50">
                 <div className="w-2.5 h-2.5 rounded-full bg-red-500/70 shrink-0" />
                 <div className="w-2.5 h-2.5 rounded-full bg-yellow-500/70 shrink-0" />
                 <div className="w-2.5 h-2.5 rounded-full bg-green-500/70 shrink-0" />
-                <span className="ml-2 text-xs text-(--muted-foreground) font-mono truncate">
+                <span className="ml-2 text-xs text-muted-foreground font-mono truncate">
                   sabin@portfolio: ~
                 </span>
               </div>
