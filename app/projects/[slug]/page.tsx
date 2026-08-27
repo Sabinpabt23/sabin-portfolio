@@ -20,14 +20,14 @@ export async function generateMetadata({
   const project = getProjectBySlug(slug);
 
   if (!project) {
-    return { title: "Project Not Found — Sabin Pant" };
+    return { title: "Project not found · Sabin Pant" };
   }
 
   return {
-    title: `${project.title} — Sabin Pant`,
+    title: `${project.title} · Sabin Pant`,
     description: project.description,
     openGraph: {
-      title: `${project.title} — Sabin Pant`,
+      title: `${project.title} · Sabin Pant`,
       description: project.description,
       type: "article",
     },
@@ -57,16 +57,16 @@ export default async function ProjectDetailPage({
           Back to home
         </Link>
 
-        <div className="mb-10 sm:mb-14">
-          <p className="text-xs font-medium tracking-widest uppercase mb-3 text-(--primary)">
+        <div className="mb-8 sm:mb-12">
+          <p className="text-sm font-medium mb-2 text-muted-foreground">
             {project.subtitle}
           </p>
-          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-(--foreground)">
+          <h1 className="text-3xl sm:text-4xl font-semibold tracking-tight text-foreground">
             {project.title}
           </h1>
         </div>
 
-        <div className="flex flex-wrap gap-2 mb-10 sm:mb-14">
+        <div className="flex flex-wrap gap-2 mb-10 sm:mb-12">
           {project.stack.map((tech) => (
             <Badge key={tech} variant="outline" className="font-mono text-xs">
               {tech}
@@ -74,38 +74,35 @@ export default async function ProjectDetailPage({
           ))}
         </div>
 
-        <div className="rounded-2xl border border-(--border) bg-(--secondary)/30 overflow-hidden mb-10 sm:mb-14 min-h-55 sm:min-h-70">
-          <div className="flex items-center gap-2 px-4 py-3 border-b border-(--border)/50">
-            <div className="w-2.5 h-2.5 rounded-full bg-red-500/60" />
-            <div className="w-2.5 h-2.5 rounded-full bg-yellow-500/60" />
-            <div className="w-2.5 h-2.5 rounded-full bg-green-500/60" />
-            <span className="ml-2 text-xs text-(--muted-foreground) font-mono truncate">
-              {project.title.toLowerCase()}/architecture
+        <div className="rounded-xl border border-(--border) bg-(--secondary)/30 overflow-hidden mb-10 sm:mb-12">
+          <div className="px-4 py-2.5 border-b border-(--border)">
+            <span className="text-xs text-muted-foreground font-medium">
+              Architecture
             </span>
           </div>
           <ArchDiagram nodes={project.arch} />
         </div>
 
-        <section className="mb-10 sm:mb-14">
-          <h2 className="text-xl sm:text-2xl font-bold mb-4 text-(--foreground)">
+        <section className="mb-10 sm:mb-12">
+          <h2 className="text-lg sm:text-xl font-semibold mb-4 text-foreground">
             Overview
           </h2>
-          <p className="text-(--muted-foreground) leading-relaxed text-sm sm:text-base whitespace-pre-line">
+          <p className="text-muted-foreground leading-[1.8] text-sm sm:text-base">
             {project.longDescription}
           </p>
         </section>
 
-        <section className="mb-10 sm:mb-14">
-          <h2 className="text-xl sm:text-2xl font-bold mb-5 text-(--foreground)">
+        <section className="mb-10 sm:mb-12">
+          <h2 className="text-lg sm:text-xl font-semibold mb-5 text-foreground">
             Highlights
           </h2>
           <ul className="space-y-3">
             {project.highlights.map((highlight, i) => (
               <li
                 key={i}
-                className="flex gap-3 text-sm sm:text-base text-(--secondary-foreground)"
+                className="flex gap-3 text-sm sm:text-base text-secondary-foreground"
               >
-                <span className="mt-2 w-1.5 h-1.5 rounded-full shrink-0 bg-(--primary)" />
+                <span className="mt-2 w-1.5 h-1.5 rounded-full shrink-0 bg-muted-foreground" />
                 <span className="leading-relaxed">{highlight}</span>
               </li>
             ))}

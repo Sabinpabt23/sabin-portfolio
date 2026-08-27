@@ -4,38 +4,38 @@
 @custom-variant dark (&:is(.dark *));
 
 :root {
-  --background: #e9e5f9;
-  --foreground: #120e26;
-  --card: #dcd6f2;
-  --card-foreground: #120e26;
-  --primary: #4f46e5;
+  --background: #ffffff;
+  --foreground: #18181b;
+  --card: #fafafa;
+  --card-foreground: #18181b;
+  --primary: #2563eb;
   --primary-foreground: #ffffff;
-  --secondary: #dcd6f2;
-  --secondary-foreground: #2f2850;
-  --muted: #e0daf5;
-  --muted-foreground: #544c78;
-  --accent: #4f46e5;
+  --secondary: #f4f4f5;
+  --secondary-foreground: #3f3f46;
+  --muted: #f4f4f5;
+  --muted-foreground: #71717a;
+  --accent: #2563eb;
   --accent-foreground: #ffffff;
-  --border: #b8ade0;
-  --ring: #4f46e5;
-  --radius: 0.75rem;
+  --border: #e4e4e7;
+  --ring: #2563eb;
+  --radius: 0.5rem;
 }
 
 .dark {
-  --background: #0a0a0f;
-  --foreground: #e8e8f0;
-  --card: #111118;
-  --card-foreground: #e8e8f0;
-  --primary: #6366f1;
+  --background: #0a0a0a;
+  --foreground: #ededed;
+  --card: #141414;
+  --card-foreground: #ededed;
+  --primary: #3b82f6;
   --primary-foreground: #ffffff;
-  --secondary: #1e1e2e;
-  --secondary-foreground: #a0a0b8;
-  --muted: #1a1a28;
-  --muted-foreground: #6b6b8a;
-  --accent: #6366f1;
+  --secondary: #1a1a1a;
+  --secondary-foreground: #d4d4d8;
+  --muted: #171717;
+  --muted-foreground: #a1a1aa;
+  --accent: #3b82f6;
   --accent-foreground: #ffffff;
-  --border: #2a2a3e;
-  --ring: #6366f1;
+  --border: #27272a;
+  --ring: #3b82f6;
 }
 
 @theme inline {
@@ -71,28 +71,56 @@ body {
   color: var(--foreground);
   font-family: var(--font-geist-sans), sans-serif;
   transition: background-color 0.2s ease, color 0.2s ease;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
 }
 
 html {
   scroll-behavior: smooth;
 }
 
+h1,
+h2,
+h3,
+h4 {
+  text-wrap: balance;
+}
+
+p {
+  text-wrap: pretty;
+}
+
+.hide-scrollbar {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+
 ::-webkit-scrollbar {
-  width: 6px;
+  width: 10px;
 }
 
 ::-webkit-scrollbar-track {
-  background: var(--background);
+  background: transparent;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: var(--primary);
-  border-radius: 3px;
+  background: var(--border);
+  border-radius: 5px;
+  border: 2px solid var(--background);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--muted-foreground);
 }
 
 ::selection {
-  background: var(--primary);
-  color: white;
+  background: color-mix(in oklch, var(--primary) 22%, transparent);
+  color: inherit;
 }
 
 

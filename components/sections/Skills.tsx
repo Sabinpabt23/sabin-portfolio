@@ -1,5 +1,6 @@
 "use client";
 import { motion, type Variants } from "framer-motion";
+import SectionHeader from "@/components/SectionHeader";
 
 /* ─────────────────────────────────────────
    Data
@@ -19,11 +20,11 @@ const skillGroups = [
     index: "01",
     icon: "server",
     skills: [
-      { name: "Spring Boot/ Java EE", level: "advanced" },
-      { name: ".NET", level: "intermediate" },
+      { name: "Spring Boot / Java EE", level: "advanced" },
       { name: "Node.js", level: "advanced" },
-      { name: "Express.js/NestJS", level: "advanced" },
+      { name: "Express / NestJS", level: "advanced" },
       { name: "Laravel", level: "advanced" },
+      { name: ".NET", level: "intermediate" },
       { name: "Python", level: "intermediate" },
     ],
   },
@@ -34,10 +35,10 @@ const skillGroups = [
     skills: [
       { name: "React", level: "advanced" },
       { name: "Next.js", level: "advanced" },
-      { name: "ASP.NET MVC", level: "intermediate" },
       { name: "Tailwind CSS", level: "advanced" },
       { name: "HTML5 / CSS3", level: "advanced" },
-      { name: "JSP/JSTL", level: "intermediate" },
+      { name: "ASP.NET MVC", level: "intermediate" },
+      { name: "JSP / JSTL", level: "intermediate" },
     ],
   },
   {
@@ -70,7 +71,7 @@ const skillGroups = [
     skills: [
       { name: "System Design", level: "advanced" },
       { name: "REST API", level: "advanced" },
-      { name: "JWT/Session Auth", level: "advanced" },
+      { name: "JWT / Session Auth", level: "advanced" },
       { name: "RBAC", level: "advanced" },
     ],
   },
@@ -81,22 +82,16 @@ const skillGroups = [
     skills: [
       { name: "Git / GitHub", level: "advanced" },
       { name: "Postman", level: "advanced" },
-      { name: "PowerBI", level: "intermediate" },
+      { name: "Power BI", level: "intermediate" },
       { name: "Microsoft Office", level: "intermediate" },
     ],
   },
 ];
 
-/* ─────────────────────────────────────────
-   Level styling — opacity-based, not badge
-───────────────────────────────────────── */
-const levelStyle: Record<
-  string,
-  { opacity: string; weight: string; suffix: string }
-> = {
-  advanced: { opacity: "opacity-100", weight: "font-medium", suffix: "" },
-  intermediate: { opacity: "opacity-55", weight: "font-normal", suffix: "" },
-  certified: { opacity: "opacity-100", weight: "font-semibold", suffix: "*" },
+const levelStyle: Record<string, string> = {
+  advanced: "opacity-100 font-medium",
+  intermediate: "opacity-60 font-normal",
+  certified: "opacity-100 font-medium",
 };
 
 /* ─────────────────────────────────────────
@@ -161,9 +156,6 @@ function Icon({ type }: { type: string }) {
   return null;
 }
 
-/* ─────────────────────────────────────────
-   Framer variants
-───────────────────────────────────────── */
 const rowVariant: Variants = {
   hidden: { opacity: 0, y: 18 },
   show: {
@@ -180,89 +172,41 @@ export default function Skills() {
   return (
     <section
       id="skills"
-      className="py-28 relative bg-(--secondary)/20 overflow-hidden"
+      className="py-28 relative bg-(--secondary)/30 border-y border-(--border)"
     >
-      {/* subtle grid texture */}
-      <div
-        aria-hidden
-        className="pointer-events-none absolute inset-0 opacity-[0.025]"
-        style={{
-          backgroundImage:
-            "linear-gradient(var(--border) 1px, transparent 1px), linear-gradient(90deg, var(--border) 1px, transparent 1px)",
-          backgroundSize: "48px 48px",
-        }}
-      />
-
       <div className="relative z-10 max-w-6xl mx-auto px-6">
-        {/* ── Header ── */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="mb-16"
-        >
-          <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6">
-            <div>
-              <span
-                className="inline-flex items-center gap-2 px-3 py-1 rounded-full
-                border border-(--border) bg-(--secondary)
-                text-[10px] text-(--primary) mb-4 font-semibold tracking-[0.18em] uppercase"
-              >
-                Technical Skills
-              </span>
-              <h2 className="text-4xl lg:text-5xl font-bold tracking-tight">
-                What I work <span className="text-(--primary)">with.</span>
-              </h2>
-            </div>
-            {/* legend */}
-            <div className="flex items-center gap-5 text-xs text-(--muted-foreground) pb-1">
-              <span className="flex items-center gap-1.5">
-                <span className="w-1.5 h-1.5 rounded-full bg-(--foreground) opacity-100 inline-block" />
-                Advanced
-              </span>
-              <span className="flex items-center gap-1.5 opacity-55">
-                <span className="w-1.5 h-1.5 rounded-full bg-(--foreground) inline-block" />
-                Intermediate
-              </span>
-              <span className="flex items-center gap-1.5">
-                <span className="w-1.5 h-1.5 rounded-full bg-(--primary) inline-block" />
-                Certified*
-              </span>
-            </div>
+        <div className="mb-12 flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6">
+          <SectionHeader
+            title="Skills"
+            description="What I work with day to day. Dimmed items are ones I use less often."
+          />
+          {/* legend */}
+          <div className="flex items-center gap-2 text-xs text-muted-foreground pb-1 shrink-0">
+            <span className="w-1.5 h-1.5 rounded-full bg-primary inline-block" />
+            AWS certified
           </div>
-        </motion.div>
+        </div>
 
-        {/* ── Core stack highlight bar ── */}
+        {/* ── Core stack ── */}
         <motion.div
-          initial={{ opacity: 0, y: 14 }}
+          initial={{ opacity: 0, y: 12 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.55, delay: 0.1 }}
-          className="mb-12 p-5 rounded-2xl border border-(--primary)/25
-            bg-(--primary)/5 flex flex-col sm:flex-row sm:items-center gap-4"
+          transition={{ duration: 0.45 }}
+          className="mb-12 p-5 rounded-lg border border-(--border) bg-card flex flex-col sm:flex-row sm:items-center gap-4"
         >
-          <span
-            className="text-[10px] font-bold tracking-[0.2em] uppercase
-            text-(--primary) whitespace-nowrap shrink-0"
-          >
-            Core Stack
+          <span className="text-xs font-medium text-muted-foreground whitespace-nowrap shrink-0">
+            Core stack
           </span>
-          <div className="h-px w-full sm:w-auto sm:h-4 bg-(--primary)/20 shrink-0" />
+          <div className="hidden sm:block h-4 w-px bg-(--border) shrink-0" />
           <div className="flex flex-wrap gap-2">
-            {coreStack.map((tech, i) => (
-              <motion.span
+            {coreStack.map((tech) => (
+              <span
                 key={tech}
-                initial={{ opacity: 0, scale: 0.9 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.15 + i * 0.07 }}
-                className="px-3 py-1 rounded-lg text-sm font-semibold
-                  text-(--primary) bg-(--primary)/10
-                  border border-(--primary)/20"
+                className="px-3 py-1 rounded-md text-sm font-medium text-foreground bg-secondary border border-(--border)"
               >
                 {tech}
-              </motion.span>
+              </span>
             ))}
           </div>
         </motion.div>
@@ -277,24 +221,21 @@ export default function Skills() {
               whileInView="show"
               viewport={{ once: true, margin: "-60px" }}
               transition={{ delay: i * 0.07 }}
-              className="group py-6 grid grid-cols-[1fr] lg:grid-cols-[220px_1fr] gap-4 lg:gap-8 items-start"
+              className="py-6 grid grid-cols-[1fr] lg:grid-cols-[220px_1fr] gap-4 lg:gap-8 items-start"
             >
               {/* Category label */}
               <div className="flex items-center gap-3">
-                <span className="text-[11px] font-mono text-(--muted-foreground) opacity-50 select-none w-6 shrink-0">
+                <span className="text-[11px] font-mono text-muted-foreground opacity-50 select-none w-6 shrink-0">
                   {group.index}
                 </span>
-                <div
-                  className="w-7 h-7 rounded-lg flex items-center justify-center shrink-0
-                    bg-(--secondary) border border-(--border) text-(--foreground)"
-                >
+                <div className="w-7 h-7 rounded-md flex items-center justify-center shrink-0 bg-secondary border border-(--border) text-muted-foreground">
                   <Icon type={group.icon} />
                 </div>
                 <div>
-                  <h3 className="text-sm font-semibold leading-tight text-(--foreground)">
+                  <h3 className="text-sm font-semibold leading-tight text-foreground">
                     {group.category}
                   </h3>
-                  <p className="text-[10px] text-(--muted-foreground) mt-0.5">
+                  <p className="text-[10px] text-muted-foreground mt-0.5">
                     {group.skills.length} skills
                   </p>
                 </div>
@@ -303,7 +244,6 @@ export default function Skills() {
               {/* Skills — inline tag flow */}
               <div className="flex flex-wrap gap-2 pl-9 lg:pl-0">
                 {group.skills.map((skill, j) => {
-                  const sty = levelStyle[skill.level];
                   const isCertified = skill.level === "certified";
                   return (
                     <motion.span
@@ -311,29 +251,15 @@ export default function Skills() {
                       initial={{ opacity: 0 }}
                       whileInView={{ opacity: 1 }}
                       viewport={{ once: true }}
-                      transition={{ delay: i * 0.06 + j * 0.04 }}
-                      className={`
-                        inline-flex items-center gap-1 px-3 py-1.5 rounded-lg text-sm
-                        border transition-all duration-200 cursor-default
-                        ${sty.opacity} ${sty.weight}
-                        bg-(--card) text-(--foreground)
-                        hover:opacity-100 hover:border-(--primary)/40
-                        ${
-                          isCertified
-                            ? "border-(--primary)/30 hover:border-(--primary)/60"
-                            : "border-(--border)"
-                        }
-                      `}
+                      transition={{ delay: i * 0.05 + j * 0.03 }}
+                      className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-md text-sm border bg-card text-foreground ${
+                        levelStyle[skill.level]
+                      } ${isCertified ? "border-(--primary)/40" : "border-(--border)"}`}
                     >
                       {isCertified && (
-                        <span className="w-1 h-1 rounded-full bg-(--primary) shrink-0" />
+                        <span className="w-1 h-1 rounded-full bg-primary shrink-0" />
                       )}
                       {skill.name}
-                      {sty.suffix && (
-                        <span className="text-(--primary) text-[10px] font-bold ml-0.5">
-                          {sty.suffix}
-                        </span>
-                      )}
                     </motion.span>
                   );
                 })}
@@ -342,17 +268,9 @@ export default function Skills() {
           ))}
         </div>
 
-        {/* ── Footer note ── */}
-        <motion.p
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.3 }}
-          className="mt-10 text-[11px] text-(--muted-foreground) text-right"
-        >
-          * AWS Certified: Cloud Practitioner, Solutions Architect, Developer,
-          SysOps, ML Specialty
-        </motion.p>
+        <p className="mt-10 text-[11px] text-muted-foreground text-right">
+          Full certification list in the Certifications section below.
+        </p>
       </div>
     </section>
   );

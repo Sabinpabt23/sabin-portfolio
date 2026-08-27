@@ -2,6 +2,7 @@
 import { motion } from "framer-motion";
 import { useState, useRef } from "react";
 import { Mail, MapPin, Send } from "lucide-react";
+import SectionHeader from "@/components/SectionHeader";
 
 // ── Validation helpers ──────────────────────────────────────────────────────
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
@@ -161,25 +162,18 @@ export default function Contact() {
     }`;
 
   return (
-    <section id="contact" className="py-32 relative bg-(--secondary)/20">
+    <section
+      id="contact"
+      className="py-24 sm:py-28 relative bg-(--secondary)/30 border-t border-(--border)"
+    >
       <div className="max-w-6xl mx-auto px-6">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="text-center mb-16"
-        >
-          <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-(--border) bg-secondary text-[10px] text-primary mb-5 font-semibold tracking-[0.18em] uppercase">
-            Contact
-          </span>
-          <h2 className="text-4xl lg:text-5xl font-bold leading-tight tracking-tight">
-            Let us <span className="text-primary">connect.</span>
-          </h2>
-          <p className="mt-4 text-muted-foreground max-w-xl mx-auto text-[0.95rem] leading-relaxed">
-            Whether you have a project in mind, a job opportunity, or just want
-            to say hi my inbox is always open.
-          </p>
-        </motion.div>
+        <div className="mb-14 text-center">
+          <SectionHeader
+            title="Contact"
+            description="Have a role, a project, or a question? Send a message or email me directly."
+            align="center"
+          />
+        </div>
 
         <div className="grid lg:grid-cols-2 gap-12 max-w-5xl mx-auto">
           {/* Left — Info */}
@@ -191,11 +185,11 @@ export default function Contact() {
             className="space-y-8"
           >
             <div>
-              <h3 className="text-xl font-semibold mb-2">Get in touch</h3>
-              <p className="text-muted-foreground leading-relaxed">
-                I am currently open to internship and full-time opportunities.
-                If you have a role that matches my profile or want to
-                collaborate on something exciting, reach out!
+              <h3 className="text-lg font-semibold mb-2">Get in touch</h3>
+              <p className="text-muted-foreground leading-relaxed text-sm">
+                I&apos;m currently open to internship and full-time roles. If you
+                have something that matches my profile, or want to collaborate,
+                get in touch.
               </p>
             </div>
 
@@ -217,9 +211,9 @@ export default function Contact() {
                 <a
                   key={item.label}
                   href={item.href}
-                  className="flex items-center gap-4 p-4 rounded-xl bg-card border border-(--border) hover:border-primary transition-all group"
+                  className="flex items-center gap-4 p-4 rounded-lg bg-card border border-(--border) hover:border-(--muted-foreground)/40 transition-colors group"
                 >
-                  <div className="w-10 h-10 rounded-lg bg-secondary flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-all">
+                  <div className="w-10 h-10 rounded-lg bg-secondary flex items-center justify-center text-muted-foreground group-hover:text-foreground transition-colors">
                     <item.icon size={18} />
                   </div>
                   <div>
@@ -239,7 +233,7 @@ export default function Contact() {
                 href="https://github.com/SabinPant"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex-1 py-3 rounded-xl border border-(--border) text-center text-sm text-secondary-foreground hover:border-primary hover:text-primary transition-all"
+                className="flex-1 py-2.5 rounded-lg border border-(--border) text-center text-sm text-secondary-foreground hover:bg-background transition-colors"
               >
                 GitHub
               </a>
@@ -247,7 +241,7 @@ export default function Contact() {
                 href="https://linkedin.com/in/sabinpant"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex-1 py-3 rounded-xl border border-(--border) text-center text-sm text-secondary-foreground hover:border-primary hover:text-primary transition-all"
+                className="flex-1 py-2.5 rounded-lg border border-(--border) text-center text-sm text-secondary-foreground hover:bg-background transition-colors"
               >
                 LinkedIn
               </a>
@@ -264,7 +258,7 @@ export default function Contact() {
             <form
               onSubmit={handleSubmit}
               noValidate
-              className="space-y-4 bg-card border border-(--border) rounded-2xl p-6"
+              className="space-y-4 bg-card border border-(--border) rounded-xl p-6"
             >
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
@@ -352,7 +346,7 @@ export default function Contact() {
               <button
                 type="submit"
                 disabled={loading}
-                className="w-full py-3 rounded-lg bg-primary text-white font-medium flex items-center justify-center gap-2 hover:opacity-90 transition-opacity disabled:opacity-50"
+                className="w-full py-2.5 rounded-lg bg-primary text-white text-sm font-medium flex items-center justify-center gap-2 hover:opacity-90 transition-opacity disabled:opacity-50"
               >
                 {loading ? (
                   "Sending..."

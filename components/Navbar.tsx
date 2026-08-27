@@ -117,10 +117,10 @@ export default function Navbar() {
   return (
     <>
       <header
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
+        className={`fixed top-0 left-0 right-0 z-50 transition-colors duration-300 ${
           scrolled
-            ? "bg-(--background)/90 backdrop-blur-md border-b border-(--border)"
-            : "bg-transparent"
+            ? "bg-(--background)/85 backdrop-blur-md border-b border-(--border)"
+            : "bg-transparent border-b border-transparent"
         }`}
       >
         <nav className="max-w-6xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
@@ -135,14 +135,12 @@ export default function Navbar() {
               window.scrollTo({ top: 0, behavior: "smooth" });
             }}
           >
-            <div className="w-8 h-8 rounded-lg bg-primary flex items-center justify-center">
+            <div className="w-8 h-8 rounded-md bg-primary flex items-center justify-center">
               <span className="text-white text-xs font-bold tracking-tight">
                 SP
               </span>
             </div>
-            <span className="text-foreground">
-              Sabin<span className="text-primary">.</span>
-            </span>
+            <span className="text-foreground">Sabin Pant</span>
           </motion.a>
 
           <motion.ul
@@ -159,10 +157,9 @@ export default function Navbar() {
                     e.preventDefault();
                     handleLinkClick(link.href);
                   }}
-                  className="text-sm text-secondary-foreground hover:text-foreground transition-colors duration-200 relative group cursor-pointer"
+                  className="text-sm text-muted-foreground hover:text-foreground transition-colors duration-200 cursor-pointer"
                 >
                   {link.label}
-                  <span className="absolute -bottom-1 left-0 w-0 h-px bg-primary transition-all duration-300 group-hover:w-full" />
                 </a>
               </li>
             ))}
@@ -223,7 +220,7 @@ export default function Navbar() {
                           e.preventDefault();
                           handleLinkClick(link.href);
                         }}
-                        className="block text-xl font-medium text-secondary-foreground hover:text-primary transition-colors py-3 active:scale-95 cursor-pointer"
+                        className="block text-xl font-medium text-secondary-foreground hover:text-foreground transition-colors py-3 cursor-pointer"
                       >
                         {link.label}
                       </a>

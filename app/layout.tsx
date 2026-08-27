@@ -13,17 +13,18 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+const SITE_DESCRIPTION =
+  "Sabin Pant is a full-stack and backend developer focused on system design, Java, .NET, Node.js, and scalable API architecture.";
+
 export const metadata: Metadata = {
   metadataBase: new URL("https://sabinpant.com.np"),
-  title: "Sabin Pant — Software Developer Portfolio",
-  description:
-    "Sabin Pant's portfolio — Full-Stack & Backend Developer specializing in system design, Node.js, Next.js, and scalable API architecture.",
+  title: "Sabin Pant · Software Developer",
+  description: SITE_DESCRIPTION,
   openGraph: {
-    title: "Sabin Pant — Software Developer Portfolio",
-    description:
-      "Sabin Pant's portfolio — Full-Stack & Backend Developer specializing in system design, Node.js, Next.js, and scalable API architecture.",
+    title: "Sabin Pant · Software Developer",
+    description: SITE_DESCRIPTION,
     url: "https://sabinpant.com.np/",
-    siteName: "Sabin Pant Portfolio",
+    siteName: "Sabin Pant",
     locale: "en_US",
     type: "website",
   },
@@ -34,9 +35,8 @@ const personJsonLd = {
   "@type": "Person",
   name: "Sabin Pant",
   url: "https://sabinpant.com.np",
-  jobTitle: "Full-Stack & Backend Developer",
-  description:
-    "Full-Stack & Backend Developer specializing in system design, Node.js, Next.js, and scalable API architecture.",
+  jobTitle: "Full-Stack and Backend Developer",
+  description: SITE_DESCRIPTION,
   sameAs: [
     "https://github.com/SabinPant",
     "https://linkedin.com/in/sabinpant",
@@ -49,7 +49,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="scroll-smooth" suppressHydrationWarning>
+    <html
+      lang="en"
+      className="scroll-smooth"
+      data-scroll-behavior="smooth"
+      suppressHydrationWarning
+    >
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >

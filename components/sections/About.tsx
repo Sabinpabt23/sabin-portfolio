@@ -1,7 +1,8 @@
 "use client";
 import { motion, AnimatePresence, type Variants } from "framer-motion";
-import { useEffect, useRef, useState, CSSProperties } from "react";
+import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
+import SectionHeader from "@/components/SectionHeader";
 
 function CountUp({
   target,
@@ -68,10 +69,10 @@ function CountUp({
 }
 
 const stats = [
-  { value: 4, suffix: "+", label: "Years Coding", accent: "#6366f1" },
-  { value: 5, suffix: "x", label: "AWS Certified", accent: "#f59e0b" },
-  { value: 4, suffix: "+", label: "Major Projects", accent: "#06b6d4" },
-  { value: 20, suffix: "+", label: "Technologies", accent: "#10b981" },
+  { value: 4, suffix: "+", label: "Years coding" },
+  { value: 5, suffix: "", label: "AWS certifications" },
+  { value: 6, suffix: "", label: "Projects" },
+  { value: 20, suffix: "+", label: "Technologies" },
 ];
 
 const interests = [
@@ -95,9 +96,8 @@ const interests = [
         <circle cx="18" cy="13" r="0.75" fill="currentColor" stroke="none" />
       </svg>
     ),
-    desc: "Gaming is what got me into coding in the first place. I started out wanting to build my own games, and that curiosity led me down the rabbit hole of programming. These days I still enjoy diving into a good game like Mobile Legends or sometimes PUBG, though I'm not as active as I used to be.",
-    accent: "#6366f1",
-    funFact: "I once spent more time modding a game than actually playing it",
+    desc: "Gaming is what got me into coding in the first place. I wanted to build my own games, and that curiosity led me into programming. I still play now and then, mostly Mobile Legends and sometimes PUBG.",
+    funFact: "I once spent more time modding a game than actually playing it.",
   },
   {
     id: "food",
@@ -118,9 +118,8 @@ const interests = [
         <path d="M21 15V2v0a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3Zm0 0v7" />
       </svg>
     ),
-    desc: "I love trying out new dishes and experiencing different cultures. There's something special about how food brings people together and tells stories about where they come from. Exploring new cuisines is one of my favorite ways to understand the world beyond my own bubble.",
-    accent: "#f59e0b",
-    funFact: "I judge cities by their street food scene",
+    desc: "I like trying new dishes and learning about different cultures. Food tells you a lot about where people come from, and exploring new cuisines is one of my favorite ways to understand a place.",
+    funFact: "I judge cities by their street food scene.",
   },
   {
     id: "travel",
@@ -140,10 +139,8 @@ const interests = [
         <path d="m16.24 7.76-1.804 5.411a2 2 0 0 1-1.265 1.265L7.76 16.24l1.804-5.411a2 2 0 0 1 1.265-1.265z" />
       </svg>
     ),
-    desc: "I love exploring new places, especially nature spots with lots of greenery and peaceful vibes. There's nothing better than discovering a quiet trail, a hidden waterfall, or just sitting somewhere with a beautiful view. Travel clears my mind and gives me fresh energy.",
-    accent: "#06b6d4",
-    funFact:
-      "I prefer getting a little lost, it's the best way to find hidden gems",
+    desc: "I like exploring new places, especially quiet nature spots. A trail, a waterfall, or just a good view is enough to reset my head after a long week.",
+    funFact: "I prefer getting a little lost. It's the best way to find hidden spots.",
   },
   {
     id: "music",
@@ -164,9 +161,8 @@ const interests = [
         <circle cx="18" cy="16" r="3" />
       </svg>
     ),
-    desc: "Music is my constant companion, especially when I'm deep in code. Whether it's lo-fi beats for focus sessions or something energetic to kick off the day, I've always got something playing in the background. It sets the mood for everything I do.",
-    accent: "#ec4899",
-    funFact: "My playlists are organized by mood, not genre",
+    desc: "There's usually something playing while I work, lo-fi when I need to focus, something with more energy to start the day.",
+    funFact: "My playlists are organized by mood, not genre.",
   },
 ];
 
@@ -188,15 +184,6 @@ const childVariants: Variants = {
   },
 };
 
-const fadeUp: Variants = {
-  hidden: { opacity: 0, y: 16 },
-  show: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.5, ease: [0.22, 1, 0.36, 1] },
-  },
-};
-
 export default function About() {
   const [imageLoaded, setImageLoaded] = useState(false);
   const [activeInterest, setActiveInterest] = useState(interests[0]);
@@ -207,26 +194,12 @@ export default function About() {
       className="py-28 relative overflow-hidden bg-background"
     >
       <div className="relative z-10 max-w-6xl mx-auto px-6">
-        {/* Section header */}
-        <motion.div
-          variants={fadeUp}
-          initial="hidden"
-          whileInView="show"
-          viewport={{ once: true, margin: "-100px" }}
-          className="text-center mb-20"
-        >
-          <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-(--border) bg-secondary text-[10px] text-primary mb-5 font-semibold tracking-[0.18em] uppercase">
-            About Me
-          </span>
-          <h2 className="text-4xl lg:text-5xl font-bold leading-tight tracking-tight">
-            The developer behind{" "}
-            <span className="text-primary">the architecture.</span>
-          </h2>
-          <p className="mt-4 text-muted-foreground max-w-xl mx-auto text-[0.95rem] leading-relaxed">
-            Backend-focused developer who genuinely enjoys figuring out how
-            complex systems fit together.
-          </p>
-        </motion.div>
+        <div className="mb-16">
+          <SectionHeader
+            title="About"
+            description="Backend-focused developer who enjoys figuring out how complex systems fit together."
+          />
+        </div>
 
         {/* Main layout grid */}
         <div className="grid lg:grid-cols-[360px_1fr] gap-14 xl:gap-20 items-start mb-20">
@@ -240,16 +213,7 @@ export default function About() {
               transition={{ duration: 0.5 }}
               className="relative w-full"
             >
-              <div
-                aria-hidden
-                className="absolute inset-0 translate-x-2.5 translate-y-2.5 rounded-2xl border border-(--primary)/15 pointer-events-none"
-              />
-              <div className="relative rounded-2xl overflow-hidden border border-(--border) bg-card shadow-sm">
-                <div
-                  aria-hidden
-                  className="absolute inset-0 z-10 pointer-events-none rounded-2xl bg-linear-to-b from-transparent via-transparent to-(--background)/60"
-                />
-
+              <div className="relative rounded-xl overflow-hidden border border-(--border) bg-card">
                 <div className="relative w-full aspect-3/4">
                   <Image
                     src="/images/sabinpanta.jpg"
@@ -281,13 +245,9 @@ export default function About() {
                 <motion.div
                   key={stat.label}
                   variants={childVariants}
-                  style={{ "--local-accent": stat.accent } as CSSProperties}
-                  className="bg-card border border-(--border) rounded-xl p-4 transition-all duration-300 ease-out cursor-default will-change-transform group hover:border-(--local-accent)/40 hover:shadow-[0_4px_20px_-4px_rgba(var(--local-accent),0.1)] hover:-translate-y-0.5"
+                  className="bg-card border border-(--border) rounded-lg p-4"
                 >
-                  <div
-                    className="text-2xl font-bold mb-0.5 tabular-nums transition-transform duration-300 group-hover:scale-105 origin-left"
-                    style={{ color: stat.accent }}
-                  >
+                  <div className="text-2xl font-semibold mb-0.5 tabular-nums">
                     <CountUp
                       target={stat.value}
                       suffix={stat.suffix}
@@ -311,97 +271,80 @@ export default function About() {
             className="flex flex-col gap-8 pt-1"
           >
             <div className="space-y-3">
-              <h3 className="flex items-center gap-2 text-xs font-semibold tracking-[0.15em] uppercase text-primary">
-                <span className="h-3 w-0.5 rounded-full bg-primary" />
-                Origin Story
+              <h3 className="text-sm font-semibold text-foreground">
+                How I got here
               </h3>
-              <p className="text-muted-foreground leading-[1.8] text-[0.95rem] font-normal text-justify lg:text-left">
-                Honestly? It started because I wanted to make my own game. That
-                sent me down the Computer Science path in high school, where I
-                picked up C and C++ and got hooked almost immediately,
-                there&apos;s something satisfying about a program finally
-                running the way it&apos;s supposed to. Somewhere along the way,
-                my curiosity drifted from &quot;how do I build a game&quot; to
-                &quot;how do real systems actually work,&quot; and I ended up
-                falling for backend architecture, data pipelines, and cloud
-                infrastructure instead.
+              <p className="text-muted-foreground leading-[1.8] text-[0.95rem]">
+                It started because I wanted to build my own game. That took me
+                into Computer Science in high school, where I picked up C and
+                C++. Over time my interest shifted from building games to
+                understanding how real systems work, and I moved toward backend
+                architecture, data pipelines, and cloud infrastructure.
               </p>
             </div>
 
-            <div className="h-px w-full bg-(--border) opacity-60" />
+            <div className="h-px w-full bg-(--border)" />
 
             <div className="space-y-3">
-              <h3 className="flex items-center gap-2 text-xs font-semibold tracking-[0.15em] uppercase text-primary">
-                <span className="h-3 w-0.5 rounded-full bg-primary" />
-                Why Backend & System Design
+              <h3 className="text-sm font-semibold text-foreground">
+                Why backend and system design
               </h3>
-              <p className="text-muted-foreground leading-[1.8] text-[0.95rem] font-normal text-justify lg:text-left">
-                I like backend because that&apos;s where the real puzzle is.
-                Figuring out how to handle race conditions, keep data consistent
-                across services, and design a schema that won&apos;t fall apart
-                six months from now, that stuff genuinely interests me.
-                I&apos;ll happily spend an hour sketching out how different
-                parts of a system talk to each other before writing a single
-                line of code. Frontend gets the spotlight, but backend is what
-                keeps the lights on.
+              <p className="text-muted-foreground leading-[1.8] text-[0.95rem]">
+                Backend is where the harder problems tend to be: handling race
+                conditions, keeping data consistent across services, and
+                designing a schema that still holds up months later. I usually
+                spend time mapping out how the parts of a system talk to each
+                other before writing much code.
               </p>
             </div>
 
-            <div className="h-px w-full bg-(--border) opacity-60" />
+            <div className="h-px w-full bg-(--border)" />
 
             <div className="space-y-3">
-              <h3 className="flex items-center gap-2 text-xs font-semibold tracking-[0.15em] uppercase text-primary">
-                <span className="h-3 w-0.5 rounded-full bg-primary" />
-                Where I&apos;m Headed
+              <h3 className="text-sm font-semibold text-foreground">
+                Where I&apos;m headed
               </h3>
-              <p className="text-muted-foreground leading-[1.8] text-[0.95rem] font-normal text-justify lg:text-left">
-                Long term, I want to work on the kind of infrastructure where
-                there&apos;s zero room for error, think banking systems, payment
-                processing, real-time transactions. The stuff where a bug
-                isn&apos;t just annoying, it&apos;s a real problem for real
-                people. That pressure is exactly what pulls me in. I want to be
-                the person building systems people can trust without even
-                thinking about it.
+              <p className="text-muted-foreground leading-[1.8] text-[0.95rem]">
+                Longer term, I want to work on infrastructure where correctness
+                really matters, such as banking systems, payment processing, and
+                real-time transactions. I want to build systems people can rely
+                on without thinking about them.
               </p>
             </div>
           </motion.div>
         </div>
 
         {/* Interests & Hobbies */}
-        <div className="mt-16 w-full">
-          {/* Section Header */}
-          <div className="flex items-center gap-3 mb-6">
-            <span className="text-primary font-semibold text-sm uppercase tracking-wider">
-              Outside the Code
-            </span>
-            <div className="flex-1 h-px bg-linear-to-r from-(--border) to-transparent" />
-          </div>
+        <div className="mt-20 w-full">
+          <h3 className="text-sm font-semibold text-foreground mb-5">
+            Outside work
+          </h3>
 
           {/* Interactive Interest Cards */}
-          <div className="rounded-2xl border border-(--border) bg-(--card)/40 backdrop-blur-md overflow-hidden flex flex-col md:flex-row shadow-2xl relative">
+          <div className="rounded-xl border border-(--border) bg-card overflow-hidden flex flex-col md:flex-row relative">
             {/* Left Sidebar (Navigation) */}
-            <div className="w-full md:w-70 bg-(--background)/50 border-b md:border-b-0 md:border-r border-(--border) flex flex-row md:flex-col p-3 gap-2 overflow-x-auto hide-scrollbar z-20">
+            <div className="w-full md:w-64 bg-(--secondary) border-b md:border-b-0 md:border-r border-(--border) flex flex-row md:flex-col p-3 gap-1 overflow-x-auto hide-scrollbar z-20">
               {interests.map((item) => {
                 const isActive = activeInterest.id === item.id;
                 return (
                   <button
                     key={item.id}
                     onClick={() => setActiveInterest(item)}
-                    className={`flex items-center gap-3 px-4 py-3 rounded-xl border-l-2 transition-all duration-300 ease-out shrink-0 md:shrink ${
+                    className={`flex items-center gap-3 px-4 py-3 rounded-lg border-l-2 transition-colors duration-200 shrink-0 md:shrink ${
                       isActive
-                        ? "bg-secondary border-primary"
-                        : "border-transparent hover:bg-(--secondary)/50"
+                        ? "bg-background border-foreground"
+                        : "border-transparent hover:bg-background/60"
                     }`}
                   >
                     <div
-                      className={`transition-colors duration-300 ${
-                        isActive ? "text-primary" : "text-muted-foreground"
+                      className={`transition-colors duration-200 ${
+                        isActive ? "text-foreground" : "text-muted-foreground"
                       }`}
                     >
                       {item.icon}
                     </div>
                     <span
-                      className={`text-sm font-semibold tracking-wide whitespace-nowrap transition-colors duration-300 ${
+                      className={`text-sm font-medium whitespace-nowrap transition-colors duration-200 ${
                         isActive ? "text-foreground" : "text-muted-foreground"
                       }`}
                     >
@@ -413,78 +356,48 @@ export default function About() {
             </div>
 
             {/* Right Content Display */}
-            <div className="flex-1 relative p-8 md:p-12 min-h-95 flex flex-col justify-center">
-              {/* Subtle background pattern */}
-              <div
-                className="absolute inset-0 pointer-events-none opacity-[0.08] dark:opacity-[0.04]"
-                style={{
-                  backgroundImage: `radial-gradient(circle, var(--border) 1px, transparent 1px)`,
-                  backgroundSize: "20px 20px",
-                }}
-              />
-
+            <div className="flex-1 relative p-8 md:p-12 min-h-80 flex flex-col justify-center">
               <AnimatePresence mode="wait">
                 <motion.div
                   key={activeInterest.id}
-                  initial={{ opacity: 0, y: 10, filter: "blur(4px)" }}
-                  animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-                  exit={{ opacity: 0, y: -10, filter: "blur(4px)" }}
-                  transition={{ duration: 0.3, ease: "easeOut" }}
+                  initial={{ opacity: 0, y: 8 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -8 }}
+                  transition={{ duration: 0.25, ease: "easeOut" }}
                   className="relative z-10 w-full max-w-2xl"
                 >
-                  {/* Icon & Label */}
-                  <div className="flex items-center gap-3 mb-6">
-                    <div style={{ color: activeInterest.accent }}>
+                  <div className="flex items-center gap-3 mb-4">
+                    <div className="text-muted-foreground">
                       {activeInterest.icon}
                     </div>
-                    <h3 className="text-3xl font-bold text-foreground tracking-tight">
+                    <h4 className="text-2xl font-semibold text-foreground tracking-tight">
                       {activeInterest.label}
-                    </h3>
+                    </h4>
                   </div>
 
-                  {/* Description */}
-                  <p className="text-muted-foreground text-[0.95rem] leading-relaxed mb-8">
+                  <p className="text-muted-foreground text-[0.95rem] leading-relaxed mb-6">
                     {activeInterest.desc}
                   </p>
 
-                  {/* Fun Fact Bubble */}
-                  <div
-                    className="inline-flex items-start gap-3 px-5 py-4 rounded-2xl"
-                    style={{
-                      backgroundColor: activeInterest.accent + "12",
-                      border: `1px solid ${activeInterest.accent}25`,
-                    }}
-                  >
+                  <div className="inline-flex items-start gap-3 px-4 py-3 rounded-lg bg-secondary border border-(--border)">
                     <svg
-                      width="18"
-                      height="18"
+                      width="16"
+                      height="16"
                       viewBox="0 0 24 24"
                       fill="none"
                       stroke="currentColor"
                       strokeWidth="1.5"
                       strokeLinecap="round"
                       strokeLinejoin="round"
-                      style={{
-                        color: activeInterest.accent,
-                        marginTop: "2px",
-                        flexShrink: 0,
-                      }}
+                      className="text-muted-foreground mt-0.5 shrink-0"
                     >
                       <circle cx="12" cy="12" r="10" />
                       <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3" />
                       <path d="M12 17h.01" />
                     </svg>
-                    <div>
-                      <p
-                        className="text-xs font-semibold uppercase tracking-wider mb-1"
-                        style={{ color: activeInterest.accent }}
-                      >
-                        Fun Fact
-                      </p>
-                      <p className="text-sm text-foreground leading-relaxed">
-                        {activeInterest.funFact}
-                      </p>
-                    </div>
+                    <p className="text-sm text-foreground leading-relaxed">
+                      {activeInterest.funFact}
+                    </p>
                   </div>
                 </motion.div>
               </AnimatePresence>

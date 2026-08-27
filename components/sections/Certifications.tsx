@@ -1,5 +1,6 @@
 "use client";
 import { motion } from "framer-motion";
+import SectionHeader from "@/components/SectionHeader";
 
 /* ─────────────────────────────────────────
    Data
@@ -63,26 +64,12 @@ export default function Certifications() {
   return (
     <section id="certifications" className="py-24 md:py-32">
       <div className="max-w-4xl mx-auto px-6">
-        {/* Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 12 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
-          className="mb-20 md:mb-24 text-center flex flex-col items-center"
-        >
-          <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-(--border) bg-(--secondary) text-[10px] text-(--primary) mb-5 font-semibold tracking-[0.18em] uppercase">
-            Certifications
-          </span>
-          <h2 className="text-4xl lg:text-5xl font-bold leading-tight tracking-tight">
-            Credentials that back{" "}
-            <span className="text-(--primary)">the work.</span>
-          </h2>
-          <p className="mt-4 text-(--muted-foreground) max-w-xl mx-auto text-[0.95rem] leading-relaxed">
-            Seven certifications across cloud infrastructure, machine learning,
-            and product design, each verifiable at the source.
-          </p>
-        </motion.div>
+        <div className="mb-16 md:mb-20">
+          <SectionHeader
+            title="Certifications"
+            description="Seven certifications across cloud infrastructure, machine learning, and product design. Each links to the verification source."
+          />
+        </div>
 
         {/* Groups */}
         <div className="space-y-14 md:space-y-16">
@@ -97,11 +84,11 @@ export default function Certifications() {
                 className="flex items-center justify-between gap-4 mb-4"
               >
                 <div className="flex items-center gap-2.5">
-                  <span className="text-[13px] font-semibold tracking-[0.04em] uppercase text-(--primary)">
+                  <span className="text-[13px] font-semibold text-foreground">
                     {group.issuer}
                   </span>
                   <span className="text-(--border)">·</span>
-                  <span className="text-[13px] text-(--muted-foreground)">
+                  <span className="text-[13px] text-muted-foreground">
                     {group.note}
                   </span>
                 </div>

@@ -20,7 +20,7 @@ export default function ArchDiagram({ nodes }: { nodes: ArchNode[] }) {
               whileHover={{ y: -2 }}
               className="flex flex-col items-center gap-2 cursor-default"
             >
-              <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-xl flex items-center justify-center border border-(--border) bg-(--primary)/8 hover:bg-(--primary)/12 transition-colors duration-300 text-primary">
+              <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-lg flex items-center justify-center border border-(--border) bg-card text-muted-foreground">
                 {node.icon === "browser" && (
                   <svg
                     width="20"
