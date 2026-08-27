@@ -64,24 +64,24 @@ function Terminal({ reduceMotion }: { reduceMotion: boolean }) {
   }, [reduceMotion]);
 
   return (
-    <div className="rounded-lg border border-(--border) bg-(--card) overflow-hidden">
+    <div className="rounded-lg border border-(--border) bg-card overflow-hidden">
       {/* Window titlebar */}
-      <div className="flex items-center justify-between px-4 py-2.5 border-b border-(--border) bg-(--secondary)">
-        <span className="text-xs font-mono text-(--muted-foreground) truncate">
+      <div className="flex items-center justify-between px-3 py-2 border-b border-(--border) bg-secondary">
+        <span className="text-[11px] font-mono text-muted-foreground truncate">
           sabin@portfolio: ~
         </span>
         <span
           aria-hidden
-          className="flex items-center gap-3.5 mr-4 font-mono text-sm leading-none text-(--muted-foreground) select-none"
+          className="flex items-center gap-3 font-mono text-xs leading-none text-muted-foreground select-none"
         >
           <span>—</span>
-          <span className="text-xs">▢</span>
+          <span className="text-[10px]">▢</span>
           <span>✕</span>
         </span>
       </div>
 
       {/* Body */}
-      <div className="p-4 sm:p-5 font-mono text-[13px] sm:text-sm leading-7 overflow-x-auto">
+      <div className="p-3.5 font-mono text-xs leading-6 overflow-x-auto">
         <div className="min-w-max sm:min-w-0">
           {terminalLines.map((line, i) => (
             <AnimatePresence key={i}>
@@ -96,15 +96,13 @@ function Terminal({ reduceMotion }: { reduceMotion: boolean }) {
                       <span className="text-green-600 dark:text-green-400">
                         $
                       </span>{" "}
-                      <span className="text-(--foreground)">{line.cmd}</span>
+                      <span className="text-foreground">{line.cmd}</span>
                     </span>
                   )}
                   {line.kind === "out" && (
                     <span>
                       <span className="text-sky-600 dark:text-sky-400">→</span>{" "}
-                      <span className="text-(--muted-foreground)">
-                        {line.text}
-                      </span>
+                      <span className="text-muted-foreground">{line.text}</span>
                     </span>
                   )}
                   {line.kind === "status" && (
@@ -112,14 +110,14 @@ function Terminal({ reduceMotion }: { reduceMotion: boolean }) {
                       <span className="text-green-600 dark:text-green-400">
                         →
                       </span>{" "}
-                      <span className="text-(--foreground)">{line.text}</span>
+                      <span className="text-foreground">{line.text}</span>
                       <motion.span
                         aria-hidden
                         animate={
                           reduceMotion ? undefined : { opacity: [1, 0, 1] }
                         }
                         transition={{ duration: 1, repeat: Infinity }}
-                        className="ml-1 inline-block w-2 h-4 -mb-0.5 bg-green-500"
+                        className="ml-1 inline-block w-1.5 h-3.5 -mb-0.5 bg-green-500"
                       />
                     </span>
                   )}
@@ -149,14 +147,14 @@ export default function Hero() {
       id="hero"
       className="relative min-h-screen border-b border-(--border)"
     >
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 w-full pt-28 sm:pt-32 lg:pt-36 pb-20 sm:pb-24">
-        <div className="flex flex-col lg:grid lg:grid-cols-[1.1fr_0.9fr] lg:grid-rows-[auto_auto] gap-10 lg:gap-x-16 lg:gap-y-8 lg:items-center">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 w-full pt-24 sm:pt-28 lg:pt-32 pb-20 sm:pb-24">
+        <div className="flex flex-col lg:grid lg:grid-cols-[1.1fr_0.9fr] lg:grid-rows-[auto_1fr] gap-10 lg:gap-x-16 lg:gap-y-7 lg:items-start">
           {/* Text — role, name, intro */}
-          <div className="order-1 lg:col-start-1 lg:row-start-1 lg:self-end">
+          <div className="order-1 lg:col-start-1 lg:row-start-1 lg:pt-12 xl:pt-16">
             <motion.p
               {...fade}
               transition={{ duration: 0.5 }}
-              className="text-sm sm:text-base font-medium text-(--muted-foreground) mb-4"
+              className="text-sm font-medium text-muted-foreground mb-3"
             >
               Full-Stack &amp; Backend Developer
             </motion.p>
@@ -164,7 +162,7 @@ export default function Hero() {
             <motion.h1
               {...fade}
               transition={{ duration: 0.5, delay: 0.05 }}
-              className="text-5xl sm:text-6xl lg:text-7xl font-semibold tracking-tight leading-[1.02]"
+              className="text-4xl sm:text-5xl lg:text-6xl font-semibold tracking-tight leading-[1.05]"
             >
               Sabin Pant
             </motion.h1>
@@ -172,10 +170,10 @@ export default function Hero() {
             <motion.p
               {...fade}
               transition={{ duration: 0.5, delay: 0.1 }}
-              className="mt-6 text-lg sm:text-xl text-(--muted-foreground) leading-relaxed max-w-xl"
+              className="mt-5 text-base sm:text-lg text-muted-foreground leading-relaxed max-w-lg"
             >
-              Forever curious, always tinkering, never standing still. I&apos;m a
-              backend developer who cares about getting the architecture right
+              Forever curious, always tinkering, never standing still. I&apos;m
+              a backend developer who cares about getting the architecture right
               before writing code, building systems and APIs that stay clean as
               they grow.
             </motion.p>
@@ -185,14 +183,14 @@ export default function Hero() {
           <motion.div
             {...fade}
             transition={{ duration: 0.5, delay: 0.1 }}
-            className="order-2 lg:col-start-2 lg:row-start-1 lg:row-span-2 flex flex-col gap-5 w-full max-w-md mx-auto lg:mx-0 lg:ml-auto"
+            className="order-2 lg:col-start-2 lg:row-start-1 lg:row-span-2 flex flex-col gap-4 w-full max-w-sm mx-auto lg:mx-0"
           >
-            <div className="relative w-full aspect-4/5 rounded-xl overflow-hidden border border-(--border) bg-(--secondary)">
+            <div className="relative w-full max-w-60 sm:max-w-72 mx-auto lg:mx-0 lg:ml-10 aspect-square rounded-full overflow-hidden border border-(--border) bg-secondary">
               <Image
                 src="/images/sabinpant.jpg"
                 alt="Sabin Pant"
                 fill
-                sizes="(min-width: 1024px) 448px, 100vw"
+                sizes="(min-width: 640px) 288px, 240px"
                 priority
                 quality={85}
                 className="object-cover"
@@ -205,13 +203,13 @@ export default function Hero() {
               {facts.map((f) => (
                 <div
                   key={f.label}
-                  className="rounded-lg border border-(--border) bg-(--card) px-3 py-3 text-center"
+                  className="rounded-lg border border-(--border) bg-card px-3 py-3 text-center"
                 >
                   <dt className="sr-only">{f.label}</dt>
                   <dd className="text-2xl font-semibold tabular-nums leading-none">
                     {f.value}
                   </dd>
-                  <dd className="mt-1.5 text-[11px] text-(--muted-foreground) leading-tight">
+                  <dd className="mt-1.5 text-[11px] text-muted-foreground leading-tight">
                     {f.label}
                   </dd>
                 </div>
@@ -228,7 +226,7 @@ export default function Hero() {
             >
               <a
                 href="#projects"
-                className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-lg bg-(--primary) text-white text-sm font-medium hover:opacity-90 transition-opacity"
+                className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-lg bg-primary text-white text-sm font-medium hover:opacity-90 transition-opacity"
               >
                 View projects
                 <ArrowRight size={16} />
@@ -236,7 +234,7 @@ export default function Hero() {
               <a
                 href="/SabinPant_CV.pdf"
                 download
-                className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-lg border border-(--border) text-sm font-medium hover:bg-(--secondary) transition-colors"
+                className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-lg border border-(--border) text-sm font-medium hover:bg-secondary transition-colors"
               >
                 <Download size={15} />
                 Download CV
@@ -254,7 +252,7 @@ export default function Hero() {
                   href={s.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 text-sm text-(--muted-foreground) hover:text-(--foreground) transition-colors"
+                  className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors"
                 >
                   {s.icon}
                   {s.label}
