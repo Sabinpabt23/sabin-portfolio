@@ -150,9 +150,9 @@ export default function Hero() {
       className="relative min-h-screen border-b border-(--border)"
     >
       <div className="max-w-6xl mx-auto px-4 sm:px-6 w-full pt-28 sm:pt-32 lg:pt-36 pb-20 sm:pb-24">
-        <div className="grid lg:grid-cols-[1.1fr_0.9fr] gap-12 lg:gap-16 items-center">
-          {/* Left — text */}
-          <div>
+        <div className="flex flex-col lg:grid lg:grid-cols-[1.1fr_0.9fr] lg:grid-rows-[auto_auto] gap-10 lg:gap-x-16 lg:gap-y-8 lg:items-center">
+          {/* Text — role, name, intro */}
+          <div className="order-1 lg:col-start-1 lg:row-start-1 lg:self-end">
             <motion.p
               {...fade}
               transition={{ duration: 0.5 }}
@@ -179,54 +179,13 @@ export default function Hero() {
               before writing code, building systems and APIs that stay clean as
               they grow.
             </motion.p>
-
-            <motion.div
-              {...fade}
-              transition={{ duration: 0.5, delay: 0.15 }}
-              className="mt-8 flex flex-wrap gap-3"
-            >
-              <a
-                href="#projects"
-                className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-(--primary) text-white text-sm font-medium hover:opacity-90 transition-opacity"
-              >
-                View projects
-                <ArrowRight size={16} />
-              </a>
-              <a
-                href="/SabinPant_CV.pdf"
-                download
-                className="inline-flex items-center gap-2 px-6 py-3 rounded-lg border border-(--border) text-sm font-medium hover:bg-(--secondary) transition-colors"
-              >
-                <Download size={15} />
-                Download CV
-              </a>
-            </motion.div>
-
-            <motion.div
-              {...fade}
-              transition={{ duration: 0.5, delay: 0.2 }}
-              className="mt-8 flex items-center gap-5"
-            >
-              {socialLinks.map((s) => (
-                <a
-                  key={s.label}
-                  href={s.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 text-sm text-(--muted-foreground) hover:text-(--foreground) transition-colors"
-                >
-                  {s.icon}
-                  {s.label}
-                </a>
-              ))}
-            </motion.div>
           </div>
 
-          {/* Right — photo + terminal + facts */}
+          {/* Media — photo + terminal + facts */}
           <motion.div
             {...fade}
             transition={{ duration: 0.5, delay: 0.1 }}
-            className="flex flex-col gap-5 w-full max-w-md mx-auto lg:mx-0 lg:ml-auto"
+            className="order-2 lg:col-start-2 lg:row-start-1 lg:row-span-2 flex flex-col gap-5 w-full max-w-md mx-auto lg:mx-0 lg:ml-auto"
           >
             <div className="relative w-full aspect-4/5 rounded-xl overflow-hidden border border-(--border) bg-(--secondary)">
               <Image
@@ -259,6 +218,50 @@ export default function Hero() {
               ))}
             </dl>
           </motion.div>
+
+          {/* Actions — buttons + socials (below media on mobile, below text on desktop) */}
+          <div className="order-3 lg:col-start-1 lg:row-start-2 lg:self-start">
+            <motion.div
+              {...fade}
+              transition={{ duration: 0.5, delay: 0.15 }}
+              className="flex flex-col sm:flex-row flex-wrap gap-3"
+            >
+              <a
+                href="#projects"
+                className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-lg bg-(--primary) text-white text-sm font-medium hover:opacity-90 transition-opacity"
+              >
+                View projects
+                <ArrowRight size={16} />
+              </a>
+              <a
+                href="/SabinPant_CV.pdf"
+                download
+                className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-lg border border-(--border) text-sm font-medium hover:bg-(--secondary) transition-colors"
+              >
+                <Download size={15} />
+                Download CV
+              </a>
+            </motion.div>
+
+            <motion.div
+              {...fade}
+              transition={{ duration: 0.5, delay: 0.2 }}
+              className="mt-6 flex items-center gap-5"
+            >
+              {socialLinks.map((s) => (
+                <a
+                  key={s.label}
+                  href={s.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 text-sm text-(--muted-foreground) hover:text-(--foreground) transition-colors"
+                >
+                  {s.icon}
+                  {s.label}
+                </a>
+              ))}
+            </motion.div>
+          </div>
         </div>
       </div>
     </section>

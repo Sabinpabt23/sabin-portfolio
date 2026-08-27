@@ -140,7 +140,8 @@ const interests = [
       </svg>
     ),
     desc: "I like exploring new places, especially quiet nature spots. A trail, a waterfall, or just a good view is enough to reset my head after a long week.",
-    funFact: "I prefer getting a little lost. It's the best way to find hidden spots.",
+    funFact:
+      "I prefer getting a little lost. It's the best way to find hidden spots.",
   },
   {
     id: "music",
@@ -323,7 +324,7 @@ export default function About() {
           {/* Interactive Interest Cards */}
           <div className="rounded-xl border border-(--border) bg-card overflow-hidden flex flex-col md:flex-row relative">
             {/* Left Sidebar (Navigation) */}
-            <div className="w-full md:w-64 bg-(--secondary) border-b md:border-b-0 md:border-r border-(--border) flex flex-row md:flex-col p-3 gap-1 overflow-x-auto hide-scrollbar z-20">
+            <div className="w-full md:w-64 bg-secondary border-b md:border-b-0 md:border-r border-(--border) flex flex-row md:flex-col p-3 gap-1 overflow-x-auto hide-scrollbar z-20">
               {interests.map((item) => {
                 const isActive = activeInterest.id === item.id;
                 return (
